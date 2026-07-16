@@ -6,3 +6,12 @@ __pycache__/
 node_modules/
 dist/
 .env
+
+data/raw/
+data/processed/
+
+ml/ml-proj/
+ml/artifacts/
+ml/mlruns/
+ml/mlartifacts/
+ml/mlflow.db
