@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: supportlens
+      POSTGRES_USER: supportlens
+      POSTGRES_PASSWORD: supportlens
+    ports:
+      - "5432:5432"
+    volumes:
+      - supportlens_postgres:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://supportlens:supportlens@db:5432/supportlens
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  supportlens_postgres:

@@ -1,0 +1,13 @@
+subject,description,category,priority
+Duplicate payment,I was charged twice for the same monthly invoice,billing,medium
+Refund request,Please refund the payment from yesterday,billing,low
+Cannot log in,My account is locked and the password reset does not work,account_access,high
+Sign in failure,I cannot access my account after changing my password,account_access,high
+Application crash,The dashboard crashes whenever I upload a CSV file,technical_issue,medium
+Production outage,The production application is not working for any user,technical_issue,high
+Export feature,Please add a PDF export option to the analytics page,feature_request,low
+Dark mode request,I would like a dark mode setting in the application,feature_request,low
+Opening hours,What are your customer support opening hours,general,low
+Update address,How can I update my company address,general,low
+Incorrect invoice,The amount shown on my invoice is incorrect,billing,medium
+Session timeout,The application logs me out every two minutes,technical_issue,medium
