@@ -9,6 +9,52 @@ from sklearn.metrics import accuracy_score, f1_score
 from sklearn.pipeline import Pipeline
 
 
+from sklearn.pipeline import FeatureUnion, Pipeline
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+
+
+def build_word_char_logistic_regression() -> Pipeline:
+    features = FeatureUnion(
+        [
+            (
+                "word_tfidf",
+                TfidfVectorizer(
+                    analyzer="word",
+                    ngram_range=(1, 2),
+                    min_df=2,
+                    max_features=50_000,
+                    sublinear_tf=True,
+                ),
+            ),
+            (
+                "char_tfidf",
+                TfidfVectorizer(
+                    analyzer="char_wb",
+                    ngram_range=(3, 5),
+                    min_df=2,
+                    max_features=50_000,
+                    sublinear_tf=True,
+                ),
+            ),
+        ]
+    )
+
+    return Pipeline(
+        [
+            ("features", features),
+            (
+                "classifier",
+                LogisticRegression(
+                    C=4.0,
+                    max_iter=1_500,
+                    class_weight="balanced",
+                    random_state=42,
+                ),
+            ),
+        ]
+    )
+
 def build_majority_baseline() -> Pipeline:
     return Pipeline(
         steps=[

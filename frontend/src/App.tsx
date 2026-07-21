@@ -3,9 +3,9 @@ import { FormEvent, useState } from "react";
 import { analyzeTicket } from "./api";
 import type { TicketAnalysisResponse } from "./types";
 
-const initialSubject = "Urgent login issue";
+const initialSubject = "Cannot log in";
 const initialDescription =
-  "I cannot access my account after changing my password.";
+  "The password reset link is not working for my account.";
 
 function formatLabel(value: string): string {
   return value
@@ -17,7 +17,8 @@ function formatLabel(value: string): string {
 export default function App() {
   const [subject, setSubject] = useState(initialSubject);
   const [description, setDescription] = useState(initialDescription);
-  const [result, setResult] = useState<TicketAnalysisResponse | null>(null);
+  const [result, setResult] =
+    useState<TicketAnalysisResponse | null>(null);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -43,12 +44,14 @@ export default function App() {
   return (
     <main className="page-shell">
       <header className="hero">
-        <p className="eyebrow">Portfolio project · Vertical Slice v0.1</p>
+        <p className="eyebrow">
+          Portfolio project · ML integration v0.2
+        </p>
         <h1>SupportLens</h1>
         <p className="hero-copy">
-          Classify customer-support tickets and explain every prediction.
-          The current classifier is a transparent keyword baseline that
-          will later be replaced by a reproducible ML pipeline.
+          Classify customer-support requests with a reproducible
+          TF-IDF and logistic-regression model. Low-confidence
+          predictions are flagged for human review.
         </p>
       </header>
 
@@ -95,20 +98,23 @@ export default function App() {
 
           {!result && !error && !isLoading && (
             <div className="empty-state">
-              Submit the ticket to view its suggested category,
-              priority, confidence, and explanation.
+              Submit a ticket to view the predicted intent,
+              confidence, alternatives, and priority.
             </div>
           )}
 
-          {isLoading && <div className="empty-state">Running the baseline…</div>}
+          {isLoading && (
+            <div className="empty-state">Running the model…</div>
+          )}
+
           {error && <div className="error-state">{error}</div>}
 
           {result && (
             <div className="result-content">
               <div className="metric-grid">
                 <article>
-                  <span>Category</span>
-                  <strong>{formatLabel(result.category)}</strong>
+                  <span>Intent</span>
+                  <strong>{formatLabel(result.intent)}</strong>
                 </article>
                 <article>
                   <span>Priority</span>
@@ -116,14 +122,37 @@ export default function App() {
                 </article>
                 <article>
                   <span>Confidence</span>
-                  <strong>{Math.round(result.confidence * 100)}%</strong>
+                  <strong>
+                    {Math.round(result.confidence * 100)}%
+                  </strong>
                 </article>
               </div>
 
+              {result.warnings.map((warning) => (
+                <div className="warning-state" key={warning}>
+                  {warning}
+                </div>
+              ))}
+
+              <div className="prediction-list">
+                <h3>Top predictions</h3>
+                {result.top_predictions.map((prediction) => (
+                  <div
+                    className="prediction-row"
+                    key={prediction.intent}
+                  >
+                    <span>{formatLabel(prediction.intent)}</span>
+                    <strong>
+                      {Math.round(prediction.probability * 100)}%
+                    </strong>
+                  </div>
+                ))}
+              </div>
+
               <div className="explanation">
-                <h3>Why this result?</h3>
+                <h3>Priority explanation</h3>
                 <ul>
-                  {result.reasons.map((reason) => (
+                  {result.priority_reasons.map((reason) => (
                     <li key={reason}>{reason}</li>
                   ))}
                 </ul>

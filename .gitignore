@@ -15,3 +15,6 @@ ml/artifacts/
 ml/mlruns/
 ml/mlartifacts/
 ml/mlflow.db
+*.tsbuildinfo
+/frontend/vite.config.js
+/frontend/vite.config.d.ts

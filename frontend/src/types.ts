@@ -3,15 +3,17 @@ export type TicketAnalysisRequest = {
   description: string;
 };
 
+export type TopPrediction = {
+  intent: string;
+  probability: number;
+};
+
 export type TicketAnalysisResponse = {
-  category:
-    | "billing"
-    | "account_access"
-    | "technical_issue"
-    | "feature_request"
-    | "general";
-  priority: "low" | "medium" | "high";
+  intent: string;
   confidence: number;
+  top_predictions: TopPrediction[];
+  priority: "low" | "medium" | "high";
   model_version: string;
-  reasons: string[];
+  warnings: string[];
+  priority_reasons: string[];
 };

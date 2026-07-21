@@ -12,6 +12,7 @@ from sklearn.metrics import ConfusionMatrixDisplay, classification_report
 from supportlens_ml.modeling import (
     build_majority_baseline,
     build_tfidf_logistic_regression,
+    build_word_char_logistic_regression,
     calculate_core_metrics,
 )
 
@@ -88,7 +89,8 @@ def main() -> None:
         majority_validation_predictions,
     )
 
-    model = build_tfidf_logistic_regression()
+    # model = build_tfidf_logistic_regression()
+    model = build_word_char_logistic_regression()
     model.fit(train["text"], train["label"])
 
     validation_predictions = model.predict(validation["text"])
@@ -103,7 +105,8 @@ def main() -> None:
         test_predictions,
     )
 
-    model_path = ARTIFACT_DIR / "tfidf_logreg_v1.joblib"
+    # model_path = ARTIFACT_DIR / "tfidf_logreg_v1.joblib"
+    model_path = ARTIFACT_DIR / "word_char_logreg_v2.joblib"
     report_path = ARTIFACT_DIR / "test_classification_report.json"
     confusion_path = ARTIFACT_DIR / "test_confusion_matrix.png"
     metrics_path = ARTIFACT_DIR / "metrics.json"
@@ -129,12 +132,13 @@ def main() -> None:
     )
 
     mlflow.set_experiment(EXPERIMENT_NAME)
-    with mlflow.start_run(run_name="tfidf-logreg-v1"):
+    with mlflow.start_run(run_name="word-char-logreg-v2"):
         mlflow.log_params(
             {
                 "model": "logistic_regression",
-                "features": "tfidf_word_1_2_grams",
-                "max_features": 50_000,
+                "features": "word_tfidf_1_2_plus_char_tfidf_3_5",
+                "word_max_features": 50_000,
+                "char_max_features": 50_000,
                 "class_weight": "balanced",
                 "train_rows": len(train),
                 "validation_rows": len(validation),

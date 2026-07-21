@@ -1,0 +1,88 @@
+text,label
+I placed an order this morning but changed my mind. Please stop it before it ships.,cancel_order
+Can you cancel the purchase I made a few minutes ago?,cancel_order
+I no longer want the item I ordered yesterday. Is it still possible to cancel it?,cancel_order
+"I found a cheaper item, thus want to cancel my order, is it still possible?",cancel_order
+I ordered two units by mistake and only need one. Can the quantity be changed?,change_order
+Could you replace the blue version in my order with the black one?,change_order
+I need to update one of the products in an order I have already placed.,change_order
+"I think I prefer another brand. Can I change the item in my order?",change_order
+My order is going to my old apartment. Please send it to my new address instead.,change_shipping_address
+I entered the wrong delivery address during checkout. Can it be corrected?,change_shipping_address
+The parcel has not shipped yet and I need to change where it will be delivered.,change_shipping_address
+"I recently moved out of my old address, can you please change the shipping address?",change_shipping_address
+Will I be charged anything if I cancel my order now?,check_cancellation_fee
+Is there a fee for cancelling before the item has been dispatched?,check_cancellation_fee
+How much does it cost to cancel an existing order?,check_cancellation_fee
+The total on my invoice looks wrong. Could someone check it?,check_invoice
+Can you verify why my invoice includes an extra charge?,check_invoice
+I think there is a mistake in the invoice amount and need it reviewed.,check_invoice
+Which payment options can I use at checkout?,check_payment_methods
+Do you accept PayPal or only debit and credit cards?,check_payment_methods
+Can I pay for an order using a bank transfer?,check_payment_methods
+How many days do I have to request a refund?,check_refund_policy
+What conditions must be met before a refund is approved?,check_refund_policy
+Could you explain your refund rules for opened products?,check_refund_policy
+I am very unhappy with how my recent issue was handled.,complaint
+The service I received was unacceptable and I would like to make a complaint.,complaint
+I have contacted support twice and the problem is still unresolved.,complaint
+"My order arrived damaged, and I am unhappy with how it was packaged.",complaint
+How can I get in touch with customer support?,contact_customer_service
+What is the email address for the customer service team?,contact_customer_service
+Where can I find your support contact details?,contact_customer_service
+I do not want to talk to a bot. Please connect me to a person.,contact_human_agent
+Can a human support agent take over this conversation?,contact_human_agent
+I need to speak with someone directly about this problem.,contact_human_agent
+I am a new customer. How do I create an account?,create_account
+Where do I sign up for a new profile?,create_account
+Can you guide me through opening an account on your website?,create_account
+I want my account and personal data removed permanently.,delete_account
+Please close my profile because I no longer use the service.,delete_account
+How can I delete my account from the platform?,delete_account
+What delivery methods are available for my area?,delivery_options
+Can I choose express delivery instead of standard shipping?,delivery_options
+Do you offer delivery to a pickup point?,delivery_options
+How long does standard delivery usually take?,delivery_period
+When should I expect my order to arrive?,delivery_period
+What is the estimated shipping time for this product?,delivery_period
+I need to update the phone number linked to my profile.,edit_account
+Where can I change my name in the account settings?,edit_account
+My personal details are outdated. How do I edit them?,edit_account
+Could you send me a copy of the invoice for my last purchase?,get_invoice
+I need a PDF invoice for my company records.,get_invoice
+Where can I download the receipt for an order?,get_invoice
+I returned the item and would like my money back.,get_refund
+Please issue a refund for the product that arrived damaged.,get_refund
+How do I request reimbursement for a cancelled order?,get_refund
+How can I subscribe to your email newsletter?,newsletter_subscription
+Please add me to the list for product updates and offers.,newsletter_subscription
+Where do I sign up to receive news by email?,newsletter_subscription
+"The money left my bank account, but the website says the payment failed.",payment_issue
+My card keeps being declined even though it works elsewhere.,payment_issue
+Checkout shows an error every time I try to complete the payment.,payment_issue
+"Somehow my card is not getting accepted, can you please help me here?",payment_issue
+How do I buy an item from your website?,place_order
+I found the product I need but cannot figure out how to complete the order.,place_order
+Can you explain the steps for placing a new order?,place_order
+I forgot my password and the reset email has not arrived.,recover_password
+How can I regain access after losing my login password?,recover_password
+The password recovery link is not working for my account.,recover_password
+The sign-up form rejects my details and will not create the account.,registration_problems
+I get an error whenever I try to register.,registration_problems
+Account registration stops after I enter my email address.,registration_problems
+"The website says my email is already registered, but I have never created an account.",registration_problems
+Where can I leave feedback about a product I purchased?,review
+I would like to write a review for my recent order.,review
+How do I rate an item on your website?,review
+How do I add a delivery address to a new account?,set_up_shipping_address
+I want to save my home address before placing an order.,set_up_shipping_address
+Where can I set a default shipping address in my profile?,set_up_shipping_address
+I am logged into the wrong profile. How can I switch to another account?,switch_account
+Can I move between my personal and business accounts without signing out?,switch_account
+I need to change from one user account to another.,switch_account
+My parcel should have arrived days ago and the tracking page has not changed.,track_order
+Can you tell me where my order is right now?,track_order
+The shipment status has been stuck in transit since Monday.,track_order
+"My refund was approved last week, but it has not reached my bank account.",track_refund
+How can I check the status of a refund that is already being processed?,track_refund
+I am still waiting for the money from my returned order.,track_refund
